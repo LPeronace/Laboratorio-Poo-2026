@@ -5,6 +5,8 @@ public class Cama extends Descanso {
 			String material, Calidad calidad, Estado estado, Zona zona, int cargaMaxima, int comodidad, int proteccionContraFrio) 
 	{
 		super(nombre, posicionX, posicionY, posicionZ, cantidadPersonasActual, gradoSuciedad,
-			material, calidad, estado, zona);
+			material, calidad, estado, zona, cargaMaxima, comodidad, proteccionContraFrio);
 	}
+	
+	
 }
