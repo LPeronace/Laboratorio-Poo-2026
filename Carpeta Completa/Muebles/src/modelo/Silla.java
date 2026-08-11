@@ -1,10 +1,10 @@
 package modelo;
 
-public class Silla extends Descanso{
-	public Silla(String nombre, int posicionX, int posicionY, int posicionZ, int cantidadPersonasActual, int gradoSuciedad,
+public final class Silla extends Descanso{
+	public Silla(String nombre, Posicion posicion,
 			String material, Calidad calidad, Estado estado, Zona zona, int cargaMaxima, int comodidad, int proteccionContraFrio) 
 	{
-		super(nombre, posicionX, posicionY, posicionZ, cantidadPersonasActual, gradoSuciedad,
+		super(nombre, posicion, 0,0,
 			material, calidad, estado, zona, cargaMaxima, comodidad, proteccionContraFrio);
 	}
 }

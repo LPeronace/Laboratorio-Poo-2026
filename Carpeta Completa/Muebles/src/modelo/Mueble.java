@@ -1,23 +1,19 @@
 package modelo;
 
-public class Mueble {
-	private String nombre;
-	private int posicionX;
-	private int posicionY;
-	private int posicionZ;
-	private int cantidadPersonasActual;
-	private String material;
-	private Calidad calidad;
-	private Estado estado;
-	private Zona zona;
-	private int gradoSuciedad;
+public abstract class Mueble {
+	protected String nombre;
+	protected Posicion posicion;
+	protected int cantidadPersonasActual;
+	protected String material;
+	protected Calidad calidad;
+	protected Estado estado;
+	protected Zona zona;
+	protected int gradoSuciedad;
 	
-	public Mueble(String nombre, int posicionX, int posicionY, int posicionZ, int cantidadPersonasActual, int gradoSuciedad,
+	public Mueble(String nombre, Posicion posicion, int cantidadPersonasActual, int gradoSuciedad,
 			String material, Calidad calidad, Estado estado, Zona zona) {
 		this.nombre = nombre;
-		this.posicionX = posicionX;
-		this.posicionY = posicionY;
-		this.posicionZ = posicionZ;
+		this.posicion = posicion;
 		this.cantidadPersonasActual = cantidadPersonasActual;
 		this.gradoSuciedad = gradoSuciedad;
 		this.material = material;
@@ -31,12 +27,10 @@ public class Mueble {
 		System.out.println("Me estan usando");
 	}
 	
-	public void mover(int posicionXNueva, int posicionYNueva, int posicionZNueva) {
-		posicionX = posicionXNueva;
-		posicionY = posicionYNueva;
-		posicionZ = posicionZNueva;
+	public void mover(Posicion posicionNueva) {
+		posicion = posicionNueva;
 		
-		System.out.println("Me movieron a:" + posicionX + " " + posicionY + " " + posicionZ);
+		System.out.println("Me movieron a:" + posicion.getPosicionX() + " " + posicion.getPosicionY() + " " + posicion.getPosicionZ());
 	}
 	public void ensuciarse() {
 		gradoSuciedad += 30;
@@ -61,23 +55,11 @@ public class Mueble {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getPosicionX() {
-		return posicionX;
+	public Posicion getPosicionX() {
+		return posicion;
 	}
-	public void setPosicionX(int posicionX) {
-		this.posicionX = posicionX;
-	}
-	public int getPosicionY() {
-		return posicionY;
-	}
-	public void setPosicionY(int posicionY) {
-		this.posicionY = posicionY;
-	}
-	public int getPosicionZ() {
-		return posicionZ;
-	}
-	public void setPosicionZ(int posicionZ) {
-		this.posicionZ = posicionZ;
+	public void setPosicionX(Posicion posicion) {
+		this.posicion = posicion;
 	}
 	public int getCapacidadPersonasActual() {
 		return cantidadPersonasActual;

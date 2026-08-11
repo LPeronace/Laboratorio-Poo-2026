@@ -1,24 +1,24 @@
 package modelo;
 
-public class Cocina extends Mueble{
+public abstract class Cocina extends Mueble{
 
 	private final int tempMaxima;
 	private final int tempMinima;
 	
 	
-	public Cocina(String nombre, int posicionX, int posicionY, int posicionZ, int cantidadPersonasActual, int gradoSuciedad,
+	public Cocina(String nombre, Posicion posicion, int cantidadPersonasActual, int gradoSuciedad,
 			String material, Calidad calidad, Estado estado, Zona zona, int tempMaxima, int tempMinima) {
 		
-		super(nombre, posicionX, posicionY, posicionZ, cantidadPersonasActual, gradoSuciedad,
+		super(nombre, posicion, cantidadPersonasActual, gradoSuciedad,
 			material, calidad, estado, zona);
 		
 		this.tempMaxima = tempMaxima;
 		this.tempMinima = tempMinima;
 	}
 	
-	public void rompersePorSobrecarga() {
+	public void rompersePorDestruccionFisica() {
 		if(getEstado() == Estado.SANO) {
-			System.out.println("Me rompi");
+			System.out.println("Me rompieron");
 			setEstado(Estado.ROTO);	
 		}
 	}

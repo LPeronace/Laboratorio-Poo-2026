@@ -1,17 +1,16 @@
 package modelo;
 
-public class Descanso extends Mueble{
+public abstract class Descanso extends Mueble{
 	
-	private int comodidad;
-	private final int cargaMaxima;
-	private int proteccionContraFrio;
-	private int cargaActual;
+	protected int comodidad;
+	protected final int cargaMaxima;
+	protected int proteccionContraFrio;
+	protected int cargaActual;
 	
-	public Descanso(String nombre, int posicionX, int posicionY, int posicionZ, int cantidadPersonasActual, int gradoSuciedad,
+	public Descanso(String nombre,Posicion posicion, int cantidadPersonasActual, int gradoSuciedad,
 			String material, Calidad calidad, Estado estado, Zona zona, int cargaMaxima, int comodidad, int proteccionContraFrio) 
 	{
-		
-		super(nombre, posicionX, posicionY, posicionZ, cantidadPersonasActual, gradoSuciedad,
+		super(nombre, posicion, cantidadPersonasActual, gradoSuciedad,
 			material, calidad, estado, zona);
 		
 		this.cargaMaxima = cargaMaxima;
@@ -19,7 +18,9 @@ public class Descanso extends Mueble{
 		this.comodidad = comodidad;
 	}
 	
-	public void rompersePorCarga() {
+	
+	
+	public void rompersePorSobrecarga() {
 		if(getCapacidadPersonasActual() > cargaMaxima) {
 			setEstado(Estado.ROTO);
 		}

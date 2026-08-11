@@ -1,9 +1,9 @@
 package modelo;
 
-public class Horno extends Cocina{
-	public Horno(String nombre, int posicionX, int posicionY, int posicionZ, int cantidadPersonasActual, int gradoSuciedad,
+public final class Horno extends Cocina{
+	public Horno(String nombre, Posicion posicion, int cantidadPersonasActual, int gradoSuciedad,
 			String material, Calidad calidad, Estado estado, Zona zona, int tempMaxima, int tempMinima) {
-		super(nombre, posicionX, posicionY, posicionZ, cantidadPersonasActual, gradoSuciedad,
+		super(nombre, posicion, cantidadPersonasActual, gradoSuciedad,
 			material, calidad, estado, zona, tempMaxima, tempMinima);
 	}
 }
