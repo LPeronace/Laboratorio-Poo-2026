@@ -1,5 +1,10 @@
 package modelo;
 
+import Utilidades.Calidad;
+import Utilidades.Estado;
+import Utilidades.Posicion;
+import Utilidades.Zona;
+
 public abstract class Mueble {
 	protected String nombre;
 	protected Posicion posicion;

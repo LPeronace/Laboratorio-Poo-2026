@@ -1,0 +1,62 @@
+package Menus;
+
+import java.util.Scanner;
+
+import MueblesCocina.Heladera;
+import Utilidades.Calidad;
+import Utilidades.Estado;
+import Utilidades.Utilidad;
+import Utilidades.Zona;
+import Utilidades.Posicion;
+import modelo.Jugador;
+public class MenuCocina {
+	private Scanner s = new Scanner(System.in);
+	private Utilidad u = new Utilidad();
+	private boolean salir = false;
+	private Posicion posicion = new Posicion(30,0,10);
+	private Heladera heladera = new Heladera("Rubi", posicion ,1,0,"Cuero", Calidad.BUENA, Estado.SANO,Zona.COCINA, 20, 1);
+	private Jugador jugador = new Jugador(0,0,0,0);
+	public MenuCocina() {
+		
+	}
+	
+	public void menu() {
+		do {
+			System.out.println("Estas en la cocina, elija una opcion");
+			System.out.println("|         1_ Usar heladera          |");
+			System.out.println("|         2_ Usar microondas        |");
+			System.out.println("|         3_ Usar horno             |");
+			System.out.println("|___________________________________|"); 
+			int opcionNumerica = u.comprobarNumero(s.nextInt(),3,1);
+			
+			switch(opcionNumerica) {
+			case 1:
+				System.out.println("Abriste la heladera, que queres hacer?");
+				System.out.println("|        1_ Comprar comida           |");
+				System.out.println("|        2_ Sacar comida             |");
+				System.out.println("|        3_ Ver la comida guardada   |");
+				System.out.println("|____________________________________|");
+				opcionNumerica = u.comprobarNumero(s.nextInt(),3,1);
+				switch(opcionNumerica) {
+				case 1:
+					System.out.println("");
+					//Lista de compra 
+					break;
+				case 2:
+					
+					break;
+				case 3:
+					break;
+				}
+				break;
+			case 2:
+				System.out.println("Estas cocinando algo en el microondas..");
+				break;
+			case 3:
+				System.out.println("Estas cocinando algo en el horno..");
+				break;
+			}
+		}while(!salir);
+		
+	}
+}
