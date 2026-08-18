@@ -1,7 +1,8 @@
 package Menus;
 
 import java.util.Scanner;
-
+import MueblesCocina.Comida;
+import Utilidades.EstadoComida;
 import MueblesCocina.Heladera;
 import Utilidades.Calidad;
 import Utilidades.Estado;
@@ -15,9 +16,12 @@ public class MenuCocina {
 	private boolean salir = false;
 	private Posicion posicion = new Posicion(30,0,10);
 	private Heladera heladera = new Heladera("Rubi", posicion ,1,0,"Cuero", Calidad.BUENA, Estado.SANO,Zona.COCINA, 20, 1);
-	private Jugador jugador = new Jugador(0,0,0,0);
-	public MenuCocina() {
-		
+	private Comida churrasco = new Comida(EstadoComida.CRUDA, "churrasco");
+	private Jugador jugador;
+	
+	
+	public MenuCocina(Jugador jugador) {
+		this.jugador = jugador;
 	}
 	
 	public void menu() {
@@ -26,8 +30,9 @@ public class MenuCocina {
 			System.out.println("|         1_ Usar heladera          |");
 			System.out.println("|         2_ Usar microondas        |");
 			System.out.println("|         3_ Usar horno             |");
+			System.out.println("|         4_ Salir             		|");
 			System.out.println("|___________________________________|"); 
-			int opcionNumerica = u.comprobarNumero(s.nextInt(),3,1);
+			int opcionNumerica = u.comprobarNumero(s.nextInt(),4,1);
 			
 			switch(opcionNumerica) {
 			case 1:
@@ -39,13 +44,24 @@ public class MenuCocina {
 				opcionNumerica = u.comprobarNumero(s.nextInt(),3,1);
 				switch(opcionNumerica) {
 				case 1:
-					System.out.println("");
-					//Lista de compra 
+					System.out.println("Elija una de las dos opciones de la lista para compras:");
+					System.out.println("1- Churrasco");
+					System.out.println("2- Churrasco");
+					opcionNumerica = u.comprobarNumero(s.nextInt(),2,1);
+					System.out.println("Compraste comida :))))))))");
+					switch(opcionNumerica) {
+					case 1,2:
+						heladera.guardarCosas(churrasco);
+						break;
+					}
+					jugador.cambiarMasHambre(20);
+					System.out.println("+20 hambre..");
 					break;
 				case 2:
-					
+					heladera.sacarCosas();
 					break;
 				case 3:
+					heladera.mostrarCosasEnLaHeladera();
 					break;
 				}
 				break;
@@ -54,6 +70,9 @@ public class MenuCocina {
 				break;
 			case 3:
 				System.out.println("Estas cocinando algo en el horno..");
+				break;
+			case 4:
+				salir = true;
 				break;
 			}
 		}while(!salir);

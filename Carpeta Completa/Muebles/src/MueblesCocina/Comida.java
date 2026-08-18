@@ -3,23 +3,21 @@ package MueblesCocina;
 import Utilidades.EstadoComida;
 
 public class Comida {
-	private EstadoComida estadoComida;
+	
+	private EstadoComida estado;
 	private String nombre;
 	
-	public Comida(EstadoComida estadoComida, String nombre) {
-		this.estadoComida = estadoComida;
+	public Comida(EstadoComida estado, String nombre) {
+		this.estado = estado;
 		this.nombre = nombre;
 	}
-	
-	
-	
-	
-	public EstadoComida getEstadoComida() {
-		return estadoComida;
+
+	public EstadoComida getEstado() {
+		return estado;
 	}
 
-	public void setEstadoComida(EstadoComida estadoComida) {
-		this.estadoComida = estadoComida;
+	public void setEstado(EstadoComida estado) {
+		this.estado = estado;
 	}
 
 	public String getNombre() {
@@ -29,5 +27,6 @@ public class Comida {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 	
 }

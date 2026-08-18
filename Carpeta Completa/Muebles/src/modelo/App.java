@@ -32,7 +32,7 @@ public class App {
 		
 		Menu menu = new Menu();
 		
-		//menu.hacerMenu();
+		menu.hacerMenu();
 		//Anotaciones;hacer un telefono con agenda, dormir en funcion de su energia y hambre, la persona tiene felicidad, la persona tiene atributos
 		//basicos, menu ir a(zona de la casa), interactuar con un objeto de la zona, mostrar su estado, etc
 	}
