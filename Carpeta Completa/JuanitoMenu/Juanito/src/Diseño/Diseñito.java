@@ -59,41 +59,48 @@ public class Diseñito extends JFrame {
 
 		setContentPane(panelPrincipal);
 		panelPrincipal.setLayout(null);
+		////BOTONES
 		
+		JButton botonComer = new JButton("Comer");
+		boton1.setBounds(436, 125, 89, 23);
+		panelPrincipal.add(botonComer);
+		
+		JButton botonEstaLleno = new JButton("Esta Lleno");
+		boton2.setBounds(436, 351, 89, 23);
+		panelPrincipal.add(botonEstaLleno);
+		
+		JButton botonCrecer = new JButton("Crecer");
+		boton3.setBounds(129, 351, 89, 23);
+		panelPrincipal.add(botonCrecer);
+		
+		JButton botonDigerir = new JButton("Digerir");
+		boton4.setBounds(767, 351, 89, 23);
+		panelPrincipal.add(botonDigerir);
+		
+		////LABELS
 		JLabel texto1 = new JLabel("Juanito");
 		texto1.setBounds(419, 39, 121, 75);
 		texto1.setForeground(new Color(255, 255, 255));
 		texto1.setFont(new Font("Yu Gothic Light", Font.PLAIN, 40));
 		panelPrincipal.add(texto1);
-		
-		JButton boton1 = new JButton("Comer");
-		boton1.setBounds(436, 125, 89, 23);
-		panelPrincipal.add(boton1);
-		
-		JButton boton2 = new JButton("Esta Lleno");
-		boton2.setBounds(436, 351, 89, 23);
-		panelPrincipal.add(boton2);
-		
-		JButton boton3 = new JButton("Crecer");
-		boton3.setBounds(129, 351, 89, 23);
-		panelPrincipal.add(boton3);
-		
-		JButton boton4 = new JButton("Digerir");
-		boton4.setBounds(767, 351, 89, 23);
-		panelPrincipal.add(boton4);
-		
-		JProgressBar barritaComida = new JProgressBar();
-		barritaComida.setBounds(695, 125, 146, 14);
-		barritaComida.setMaximum(persona.getCapacidadEstomago());
-		barritaComida.setValue(0);
-		panelPrincipal.add(barritaComida);
+
 		
 		JLabel labelBarraDeComida = new JLabel("ÑAM ÑAM: "+persona.getCantidadIngerida());
 		labelBarraDeComida.setBounds(692, 86, 164, 28);
 		labelBarraDeComida.setForeground(new Color(255, 255, 255));
 		labelBarraDeComida.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panelPrincipal.add(labelBarraDeComida);
+
+	
+		////BARRITAS DE PROGRRESO
 		
+		JProgressBar barritaComida = new JProgressBar();
+		barritaComida.setBounds(695, 125, 146, 14);
+		barritaComida.setMaximum(persona.getCapacidadEstomago());
+		barritaComida.setValue(0);
+		panelPrincipal.add(barritaComida);
+
+		////Texts Fields
 		cantidadComida = new JTextField();
 		cantidadComida.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		cantidadComida.setBounds(436, 172, 86, 20);
@@ -108,7 +115,7 @@ public class Diseñito extends JFrame {
 		//-------ACCION DE BOTONES--------
 		
 		//Barrita Dinamica(sumatoria cuando come)
-		boton1.addMouseListener(new MouseAdapter() {
+		botonComer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int valorActual = barritaComida.getValue();
@@ -121,20 +128,9 @@ public class Diseñito extends JFrame {
 				
 			}
 		});
-		
-		
-		//Barrita Dinamica (Baja a 0)
-		boton4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				barritaComida.setValue(0);
-				labelBarraDeComida.setText("ÑAM ÑAM:"+ barritaComida.getValue());
-				persona.digerir();
-			}
-		});
-		
+
 		//
-		boton3.addMouseListener(new MouseAdapter() {
+		botonCrecer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				persona.crecer();
@@ -144,6 +140,19 @@ public class Diseñito extends JFrame {
 				
 			}
 		});
+		
+		
+		//Barrita Dinamica (Baja a 0)
+		botonbotonDigerir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				barritaComida.setValue(0);
+				labelBarraDeComida.setText("ÑAM ÑAM:"+ barritaComida.getValue());
+				persona.digerir();
+			}
+		});
+		
+		
 		
 		
 	}
