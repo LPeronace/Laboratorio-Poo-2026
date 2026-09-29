@@ -23,13 +23,14 @@ import javax.swing.JTextField;
 import java.awt.List;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class Diseñito extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel panelPrincipal;
 	private Persona persona = new Persona();
-	private JTextField cantidadComida;
 
 	/**
 	 * Launch the application.
@@ -62,19 +63,19 @@ public class Diseñito extends JFrame {
 		////BOTONES
 		
 		JButton botonComer = new JButton("Comer");
-		boton1.setBounds(436, 125, 89, 23);
+		botonComer.setBounds(436, 125, 89, 23);
 		panelPrincipal.add(botonComer);
 		
 		JButton botonEstaLleno = new JButton("Esta Lleno");
-		boton2.setBounds(436, 351, 89, 23);
+		botonEstaLleno.setBounds(436, 351, 89, 23);
 		panelPrincipal.add(botonEstaLleno);
 		
 		JButton botonCrecer = new JButton("Crecer");
-		boton3.setBounds(129, 351, 89, 23);
+		botonCrecer.setBounds(129, 351, 89, 23);
 		panelPrincipal.add(botonCrecer);
 		
 		JButton botonDigerir = new JButton("Digerir");
-		boton4.setBounds(767, 351, 89, 23);
+		botonDigerir.setBounds(767, 351, 89, 23);
 		panelPrincipal.add(botonDigerir);
 		
 		////LABELS
@@ -99,13 +100,11 @@ public class Diseñito extends JFrame {
 		barritaComida.setMaximum(persona.getCapacidadEstomago());
 		barritaComida.setValue(0);
 		panelPrincipal.add(barritaComida);
-
-		////Texts Fields
-		cantidadComida = new JTextField();
-		cantidadComida.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		cantidadComida.setBounds(436, 172, 86, 20);
-		panelPrincipal.add(cantidadComida);
-		cantidadComida.setColumns(10);
+		
+		JSpinner entradaComer = new JSpinner();
+		entradaComer.setModel(new SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+		entradaComer.setBounds(436, 173, 89, 20);
+		panelPrincipal.add(entradaComer);
 		
 		
 		
@@ -118,10 +117,12 @@ public class Diseñito extends JFrame {
 		botonComer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				int valorNuevo;
 				int valorActual = barritaComida.getValue();
 				//tarea hacer un parse por el cuadro de texto.
 				
-				valorNuevo = valorActual+ cantidadComida.getText();
+				valorNuevo = valorActual+ (int) entradaComer.getValue();
 				labelBarraDeComida.setText("ÑAM ÑAM:"+valorNuevo);
 				barritaComida.setValue(valorNuevo);
 				persona.comer(40);
@@ -143,7 +144,7 @@ public class Diseñito extends JFrame {
 		
 		
 		//Barrita Dinamica (Baja a 0)
-		botonbotonDigerir.addMouseListener(new MouseAdapter() {
+		botonDigerir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				barritaComida.setValue(0);
