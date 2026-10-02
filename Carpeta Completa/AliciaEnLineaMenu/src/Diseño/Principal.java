@@ -12,11 +12,17 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.CardLayout;
+import javax.swing.JMenuBar;
 
 public class Principal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel panelPrincipal;
+	private CardLayout cl = new CardLayout(0,0);
+	private JPanel panelMundo = new PanelMundo();
+	private JPanel panelPersonaje = new PanelPersonaje();
+	private JPanel panelCrearPersonaje = new PanelCrearPersonaje();
+	private final JButton botonMenuBarMundo = new JButton("Mundo");
+	private final JButton botonMenuBarPersonaje = new JButton("Personaje");
 	/**
 	 * Launch the application.
 	 */
@@ -39,15 +45,62 @@ public class Principal extends JFrame {
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1000, 700);
-		getContentPane().setLayout(new CardLayout(0, 0));
+		
+		//Defino el layout a un cardlayout ya creado
+		getContentPane().setLayout(cl);
+		//Añado todos los paneles al contentPane con un tag para identificarlos para cuando los muestro
+		getContentPane().add(panelMundo, "panelMundo");
+		getContentPane().add(panelPersonaje, "panelPersonaje");
+		getContentPane().add(panelCrearPersonaje, "panelCrearPersonaje");
+		cl.show(getContentPane(), getContentPane().getName());
+		
+		JMenuBar barritaPaneles = new JMenuBar();
+		barritaPaneles.setToolTipText("");
+		setJMenuBar(barritaPaneles);
+		
+		JButton botonMenuBarCrearPersonaje = new JButton("Crear Personaje");
+		barritaPaneles.add(botonMenuBarCrearPersonaje);
+		
+		
+		barritaPaneles.add(botonMenuBarMundo);
+		
+		barritaPaneles.add(botonMenuBarPersonaje);
+		
+		
+		//El show del cardlayout sirve para mostrar el panel que quiera
+		cl.show(getContentPane(), "panelCrearPersonaje");
+		
+		botonMenuBarCrearPersonaje.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(getContentPane(), "panelCrearPersonaje");
+				
+			}
+		});
+		
+		botonMenuBarMundo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(getContentPane(), "panelMundo");
+
+			}
+		});
+		
+		botonMenuBarPersonaje.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(getContentPane(), "panelPersonaje");
+
+			}
+		});
 		
 		
 		
-		//crear todos los paneles en private, uno por cada clase de panel
-		//crear metodo privado para crear los paneles y agregarlos
-		//otro para los eventos de los botones
-		//todo para achicar el constructor
-		//hacer un menu con botones para cambiar de pestaña con menuBar
+		//crear todos los paneles en private, uno por cada clase de panel--- hecho
+		//crear metodo privado para crear los paneles y agregarlos---
+		//otro para los eventos de los botones---
+		//todo para achicar el constructor---
+		//hacer un menu con botones para cambiar de pestaña con menuBar---
 		
 			
 	}
