@@ -1,6 +1,7 @@
 package Diseño;
 
 import java.awt.EventQueue;
+import modelo.Persona;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,13 +14,12 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.CardLayout;
 import javax.swing.JMenuBar;
-
 public class Principal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private CardLayout cl = new CardLayout(0,0);
 	private JPanel panelMundo = new PanelMundo();
-	private JPanel panelPersonaje = new PanelPersonaje();
+	private JPanel panelPersona = new PanelPersona();
 	private JPanel panelCrearPersonaje = new PanelCrearPersonaje();
 	private final JButton botonMenuBarMundo = new JButton("Mundo");
 	private final JButton botonMenuBarPersonaje = new JButton("Personaje");
@@ -43,6 +43,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		validate();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1000, 700);
 		
@@ -50,7 +51,7 @@ public class Principal extends JFrame {
 		getContentPane().setLayout(cl);
 		//Añado todos los paneles al contentPane con un tag para identificarlos para cuando los muestro
 		getContentPane().add(panelMundo, "panelMundo");
-		getContentPane().add(panelPersonaje, "panelPersonaje");
+		getContentPane().add(panelPersona, "panelPersona");
 		getContentPane().add(panelCrearPersonaje, "panelCrearPersonaje");
 		cl.show(getContentPane(), getContentPane().getName());
 		
@@ -89,18 +90,11 @@ public class Principal extends JFrame {
 		botonMenuBarPersonaje.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				cl.show(getContentPane(), "panelPersonaje");
+				cl.show(getContentPane(), "panelPersona");
 
 			}
 		});
 		
-		
-		
-		//crear todos los paneles en private, uno por cada clase de panel--- hecho
-		//crear metodo privado para crear los paneles y agregarlos---
-		//otro para los eventos de los botones---
-		//todo para achicar el constructor---
-		//hacer un menu con botones para cambiar de pestaña con menuBar---
 		
 			
 	}

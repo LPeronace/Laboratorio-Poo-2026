@@ -15,7 +15,7 @@ public class PanelPersona extends JPanel {
 
 	public PanelPersona() {
 		setBounds(0, 0, 1000, 700);
-		setBackground(new Color(102, 0, 153));
+		setBackground(new Color(255, 255, 255));
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
 		
@@ -29,15 +29,15 @@ public class PanelPersona extends JPanel {
 		add(labelMenuPersona);
 		
 		JButton botonEstaEnMaravilla = new JButton("¿Esta en maravilla?");
-		botonEstaEnMaravilla.setBounds(97, 305, 144, 23);
+		botonEstaEnMaravilla.setBounds(119, 305, 144, 23);
 		add(botonEstaEnMaravilla);
 		
 		JButton botonEsNormal = new JButton("¿Es Normal?");
-		botonEsNormal.setBounds(432, 305, 89, 23);
+		botonEsNormal.setBounds(538, 305, 89, 23);
 		add(botonEsNormal);
 		
 		JButton botonEmbellecer = new JButton("Embellecer");
-		botonEmbellecer.setBounds(432, 154, 89, 23);
+		botonEmbellecer.setBounds(538, 154, 89, 23);
 		add(botonEmbellecer);
 		
 	}
