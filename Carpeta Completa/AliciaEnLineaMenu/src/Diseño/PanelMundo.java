@@ -21,7 +21,7 @@ public class PanelMundo extends JPanel {
 	 */
 	public PanelMundo() {
 		setForeground(new Color(255, 255, 255));
-		setBackground(new Color(255, 255, 255));
+		setBackground(Color.DARK_GRAY);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(0,0,1000,700);
 		setLayout(null);

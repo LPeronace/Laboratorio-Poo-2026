@@ -43,12 +43,14 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setBackground(Color.DARK_GRAY);
 		validate();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1000, 700);
 		
 		//Defino el layout a un cardlayout ya creado
 		getContentPane().setLayout(cl);
+		panelMundo.setBackground(Color.DARK_GRAY);
 		//Añado todos los paneles al contentPane con un tag para identificarlos para cuando los muestro
 		getContentPane().add(panelMundo, "panelMundo");
 		getContentPane().add(panelPersona, "panelPersona");

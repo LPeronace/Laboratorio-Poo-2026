@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelPersona extends JPanel {
 
@@ -15,7 +17,7 @@ public class PanelPersona extends JPanel {
 
 	public PanelPersona() {
 		setBounds(0, 0, 1000, 700);
-		setBackground(new Color(255, 255, 255));
+		setBackground(Color.DARK_GRAY);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
 		
@@ -39,6 +41,15 @@ public class PanelPersona extends JPanel {
 		JButton botonEmbellecer = new JButton("Embellecer");
 		botonEmbellecer.setBounds(538, 154, 89, 23);
 		add(botonEmbellecer);
+		
+		//Acciones
+		botonSiEsLindo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		
 		
 	}
 
