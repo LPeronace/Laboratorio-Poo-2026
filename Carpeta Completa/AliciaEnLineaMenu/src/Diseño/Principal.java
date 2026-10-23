@@ -8,6 +8,9 @@ import modelo.Persona;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import bd.Conexion;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -21,18 +24,22 @@ import java.awt.event.ActionEvent;
 public class Principal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private JFrame marco = this;
 	private CardLayout cl = new CardLayout(0,0);
 	private Mundo m = new Mundo();
-	private JPanel panelMundo = new PanelMundo(m);
-	private JPanel panelPersona = new PanelPersona(m);
-	private JPanel panelCrearPersonaje = new PanelCrearPersonaje(m);
+	private JPanel panelMundo = new PanelMundo(m, marco);
+	private JPanel panelPersona = new PanelPersona(m, marco);
+	private JPanel panelCrearPersonaje = new PanelCrearPersonaje(m, marco);
 	private JPanel panelPrincipal = new JPanel();
+	private JPanel panelConsulta = new PanelConsulta(marco);
 	private JButton botonMenuBarMundo; 
 	private JButton botonMenuBarPersonaje; 
 	private JButton botonMenuBarPrincipal; 
 	private JButton botonMenuBarCrearPersonaje;
-	private JLabel labelTituloMenu = new JLabel("Bienvenido Al Menu Principal!!!!!");
-
+	private JButton botonMenuBarConsultas;
+	
+	private JLabel labelTituloMenu;
+	private static Conexion dao = new Conexion();
 	/**
 	 * Launch the application.
 	 */
@@ -47,14 +54,19 @@ public class Principal extends JFrame {
 				}
 			}
 		});
+		dao.agregar(new Persona(1,5,-1));
 	}
 
 	/**
 	 * Create the frame.
 	 */
+	
+	public void crearLabel() {
+		labelTituloMenu = new JLabel("Bienvenido Al Menu Principal!!!!!");
+	}
 	public Principal() {
 		crearBotones();
-		
+		crearLabel();
 		eventoBotones();
 		
 		setBackground(Color.DARK_GRAY);
@@ -75,6 +87,7 @@ public class Principal extends JFrame {
 		getContentPane().add(panelMundo, "panelMundo");
 		getContentPane().add(panelPersona, "panelPersona");
 		getContentPane().add(panelCrearPersonaje, "panelCrearPersonaje");
+		getContentPane().add(panelConsulta,"panelConsulta");
 		cl.show(getContentPane(), getContentPane().getName());
 		
 		
@@ -92,6 +105,8 @@ public class Principal extends JFrame {
 		botonMenuBarPersonaje = new JButton("Personaje");
 		botonMenuBarPrincipal = new JButton("Principal");
 		botonMenuBarCrearPersonaje = new JButton("Crear Personaje");
+		botonMenuBarConsultas = new JButton("Consultas");
+		
 		
 		JMenuBar barritaPaneles = new JMenuBar();
 		barritaPaneles.setToolTipText("");
@@ -101,6 +116,7 @@ public class Principal extends JFrame {
 		barritaPaneles.add(botonMenuBarCrearPersonaje);
 		barritaPaneles.add(botonMenuBarPersonaje);
 		barritaPaneles.add(botonMenuBarMundo);
+		barritaPaneles.add(botonMenuBarConsultas);
 	}
 	public void eventoBotones() {
 		botonMenuBarCrearPersonaje.addMouseListener(new MouseAdapter() {
@@ -131,6 +147,12 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				cl.show(getContentPane(), "panelPersona");
 
+			}
+		});
+		botonMenuBarConsultas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(getContentPane(), "panelConsulta");
 			}
 		});
 	}

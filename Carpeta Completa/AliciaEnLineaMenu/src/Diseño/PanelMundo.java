@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -31,7 +33,7 @@ public class PanelMundo extends JPanel {
 	
 	//JOptionPane.showMessageDialog(panelActual, "Personaje Creado");
 	
-	public PanelMundo(Mundo m) {
+	public PanelMundo(Mundo m, JFrame marco) {
 		setForeground(new Color(255, 255, 255));
 		setBackground(Color.DARK_GRAY);
 		setBorder(new EmptyBorder(5, 5, 5, 5));

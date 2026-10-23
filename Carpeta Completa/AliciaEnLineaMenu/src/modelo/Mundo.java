@@ -9,10 +9,8 @@ public class Mundo {
 	
 	//Modificacion hecha despues de Herencia para interfaces 
 	
-	public void agregarPersona(Persona ...personaAAñadir ) {
-		for(Persona p: personaAAñadir) {
-			lasPersonas.add(p);
-		}
+	public void agregarPersona(Persona p ) {
+		lasPersonas.add(p);
 	}
 	
 	

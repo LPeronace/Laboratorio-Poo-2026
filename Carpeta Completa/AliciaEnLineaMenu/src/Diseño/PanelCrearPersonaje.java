@@ -8,9 +8,13 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+
+import bd.Conexion;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -30,9 +34,9 @@ public class PanelCrearPersonaje extends JPanel {
 	private JLabel labelUbicacion;
 	private JButton botonCrear;
 	private Persona pActual;
+	private Conexion dao = new Conexion();
 	
-	
-	public PanelCrearPersonaje(Mundo m) {
+	public PanelCrearPersonaje(Mundo m, JFrame marco) {
 		this.m = m;
 		setLayout(null);
 		setBounds(0,0,1000,700);
@@ -42,9 +46,6 @@ public class PanelCrearPersonaje extends JPanel {
 		crearBoton();
 		definirSpinners();
 		eventoBoton();
-		
-		
-		
 	}
 	
 	
@@ -102,6 +103,7 @@ public class PanelCrearPersonaje extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(crearPersonaje()) {
 					m.agregarPersona(pActual);
+					dao.agregar(pActual);
 					JOptionPane.showMessageDialog(panelActual, "Personaje Creado");
 				}
 				else {
@@ -121,6 +123,7 @@ public class PanelCrearPersonaje extends JPanel {
 		int ubicacion = (int) spinnerUbicacion.getValue();
 		
 		pActual = new Persona(locura, secreto, ubicacion);
+		//nunca falla, es al pedo la comprobacion despues se borra
 		if(pActual != null) {
 			creo = true;
 			

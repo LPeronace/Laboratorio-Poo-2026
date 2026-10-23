@@ -1,6 +1,7 @@
 package Diseño;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -34,7 +35,7 @@ public class PanelPersona extends JPanel {
 	private Persona p;
 	
 	
-	public PanelPersona(Mundo m) {
+	public PanelPersona(Mundo m, JFrame marco) {
 		this.m = m;
 		
 		setBounds(0, 0, 1000, 700);

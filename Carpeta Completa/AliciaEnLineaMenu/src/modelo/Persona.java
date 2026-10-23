@@ -10,17 +10,6 @@ public class Persona {
 		this.secreto = secreto;
 		this.ubicacion = ubicacion;
 	}
-	public Persona(int ubicacion) {
-		this.ubicacion = ubicacion;
-		}
-	
-	public Persona() {
-		}
-	
-	public Persona(int locura, int ubicacion) {
-		this.locura = locura;
-		this.ubicacion = ubicacion;
-	}
 	
 	
 	public void embellecer() {
