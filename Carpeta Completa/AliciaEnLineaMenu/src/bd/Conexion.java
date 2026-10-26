@@ -18,6 +18,30 @@ public class Conexion {
 							//aca el puerto//aca va la bdd
 	String path = "jdbc:mysql://localhost:3306/mibdohno";
 	
+	
+	//ta mal no se como seguir me perdi :(
+	public void eliminarPersona(int id) {
+		String sql = ("DELETE FROM personas WHERE id ="+ id);
+		Connection c = conectar();
+		
+		try {
+			PreparedStatement stmt = c.prepareStatement(sql);
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				
+			}
+			
+			rs.deleteRow();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	public ArrayList<Persona> conseguirPersonas() {
 		ArrayList<Persona> personas = new ArrayList<>();
 		Persona p;
@@ -54,15 +78,15 @@ public class Conexion {
 	
 	
 	public void agregar(Persona p){
-		Connection conexion = null;
+		Connection c = null;
 		
 		try {
 			
-			conexion = conectar();
+			c = conectar();
 			String sql = "INSERT INTO personas(locura,secretos,ubicacion)VALUES(?,?,?)";
 			
 			
-			PreparedStatement stmt = conexion.prepareStatement(sql);
+			PreparedStatement stmt = c.prepareStatement(sql);
 			stmt.setInt(1, p.getLocura());
 			stmt.setInt(2, p.getSecreto());
 			stmt.setInt(3, p.getUbicacion());
@@ -75,7 +99,7 @@ public class Conexion {
 			
 		}finally {
 			try {
-				conexion.close();
+				c.close();
 
 			}catch(SQLException e){
 				e.printStackTrace();
@@ -86,16 +110,16 @@ public class Conexion {
 	}
 	
 	public Connection conectar() {
-		Connection conexion = null;
+		Connection c = null;
 		try {
 			//establece la conexion
-			conexion = DriverManager.getConnection(path, user, psw);
+			c = DriverManager.getConnection(path, user, psw);
 			
 		}catch(SQLException e){
 			e.printStackTrace();
 			
 		}
 		
-		return conexion;
+		return c;
 	}
 }

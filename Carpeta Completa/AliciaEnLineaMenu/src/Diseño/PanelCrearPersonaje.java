@@ -34,7 +34,7 @@ public class PanelCrearPersonaje extends JPanel {
 	private JLabel labelUbicacion;
 	private JButton botonCrear;
 	private Persona pActual;
-	private Conexion dao = new Conexion();
+	private Conexion c = new Conexion();
 	
 	public PanelCrearPersonaje(Mundo m, JFrame marco) {
 		this.m = m;
@@ -103,7 +103,7 @@ public class PanelCrearPersonaje extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(crearPersonaje()) {
 					m.agregarPersona(pActual);
-					dao.agregar(pActual);
+					c.agregar(pActual);
 					JOptionPane.showMessageDialog(panelActual, "Personaje Creado");
 				}
 				else {

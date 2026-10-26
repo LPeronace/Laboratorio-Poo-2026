@@ -145,10 +145,13 @@ public class PanelMundo extends JPanel {
 	public void mostrarOptionPane(String s) {
 		JOptionPane.showMessageDialog(panelActual, s);
 	}
+	
+	
 	public int verId(Persona p) {
 		int contador = 0;
 		boolean salir = false;
 		ArrayList<Persona> personitas = m.getLasPersonas();
+		
 		while(!salir) {
 			if(personitas.get(contador) == p) {
 				salir = true;

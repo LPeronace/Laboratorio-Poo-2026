@@ -32,6 +32,7 @@ public class Principal extends JFrame {
 	private JPanel panelCrearPersonaje = new PanelCrearPersonaje(m, marco);
 	private JPanel panelPrincipal = new JPanel();
 	private JPanel panelConsulta = new PanelConsulta(marco);
+	
 	private JButton botonMenuBarMundo; 
 	private JButton botonMenuBarPersonaje; 
 	private JButton botonMenuBarPrincipal; 
@@ -39,10 +40,9 @@ public class Principal extends JFrame {
 	private JButton botonMenuBarConsultas;
 	
 	private JLabel labelTituloMenu;
-	private static Conexion dao = new Conexion();
-	/**
-	 * Launch the application.
-	 */
+	
+	//private static Conexion dao = new Conexion();
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -54,7 +54,7 @@ public class Principal extends JFrame {
 				}
 			}
 		});
-		dao.agregar(new Persona(1,5,-1));
+		//dao.agregar(new Persona(1,5,-1));
 	}
 
 	/**
