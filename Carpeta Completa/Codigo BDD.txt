@@ -1,0 +1,33 @@
+-- MySQL Workbench Forward Engineering -- ----------------------------------------------------- -- Schema recuperacion -- ----------------------------------------------------- 
+DROP SCHEMA IF EXISTS `tpFinalPOO` ; -- ----------------------------------------------------- -- Schema tpFinalPOO -- ----------------------------------------------------- 
+CREATE SCHEMA IF NOT EXISTS `tpFinalPOO` DEFAULT CHARACTER SET utf8mb4 
+COLLATE utf8mb4_0900_ai_ci ; 
+USE `tpFinalPOO` ; -- ----------------------------------------------------- -- Table `tpFinalPOO`.`estudios` -- ----------------------------------------------------- 
+DROP TABLE IF EXISTS `tpFinalPOO`.`estudios` ; 
+CREATE TABLE IF NOT EXISTS `tpFinalPOO`.`estudios` ( 
+`idestudio` INT NOT NULL, 
+`nombre` VARCHAR(45) NOT NULL, 
+PRIMARY KEY (`idestudio`)); -- ----------------------------------------------------- -- Table `tpFinalPOO`.`personas` -- ----------------------------------------------------- 
+DROP TABLE IF EXISTS `recuperacion`.`personas` ; 
+CREATE TABLE IF NOT EXISTS `tpFinalPOO`.`personas` ( 
+`idpersona` INT NOT NULL AUTO_INCREMENT, 
+`nombre` VARCHAR(45) NULL DEFAULT NULL, 
+`nacimiento` DATE NULL DEFAULT NULL, 
+`hijoas` BIT(1) NULL DEFAULT NULL, 
+`idestudio` INT NULL DEFAULT NULL, 
+`dni` VARCHAR(45) NOT NULL UNIQUE KEY,
+PRIMARY KEY (`idpersona`), 
+INDEX `fk_estudio_idx` (`idestudio` ASC), 
+CONSTRAINT `fk_estudio` 
+FOREIGN KEY (`idestudio`) 
+REFERENCES `tpFinalPOO`.`estudios` (`idestudio`) 
+ON DELETE CASCADE); 
+INSERT INTO `tpFinalPOO`.`estudios` (`idestudio`, `nombre`) VALUES (1, 'Secundario 
+incompleto'); 
+INSERT INTO `tpFinalPOO`.`estudios` (`idestudio`, `nombre`) VALUES (2, 'Secundario 
+completo'); 
+INSERT INTO `tpFinalPOO`.`estudios` (`idestudio`, `nombre`) VALUES (3, 'Terciario no 
+universitario'); 
+INSERT INTO `tpFinalPOO`.`estudios` (`idestudio`, `nombre`) VALUES (4, 'Universitario'); 
+INSERT INTO `tpFinalPOO`.`estudios` (`idestudio`, `nombre`) VALUES (5, 'Universitario 
+incompleto');
